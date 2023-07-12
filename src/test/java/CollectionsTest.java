@@ -127,4 +127,99 @@ public class CollectionsTest {
         assertEquals(expected, actual);
         assertEquals(expected2, actual2);
     }
+    @Test
+    public void testLinkedListClean(){
+        Queue<Integer> number = new LinkedList<>();
+        for(int i = 1; i <= 50; i++){
+            number.add(i);
+        }
+        int expected = 0;
+        number.clear();
+        int actual = number.size();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testArrayDeque(){
+        ArrayDeque<Integer> numbers = new ArrayDeque<>();
+        for (int i = 1; i <= 50; i++){
+            numbers.add(i);
+        }
+        int expected = 50;
+        int actual = numbers.size();
+
+        assertEquals(expected, actual);
+        assertTrue(numbers.contains(24));
+
+        expected = 0;
+        numbers.clear();
+        actual = numbers.size();
+        assertEquals(expected, actual);
+
+        expected = 1;
+        numbers.add(expected);
+        actual = numbers.pollFirst();
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void testVector(){
+        Vector<Integer> test = new Vector<>();
+        for (int i = 1; i <= 50; i++){
+            test.add(i);
+        }
+        int expected = 50;
+        int actual = test.lastElement();
+        assertEquals(expected, actual);
+        actual = test.size();
+        assertEquals(expected,actual);
+        assertTrue(test.contains(22));
+        test.clear();
+        assertTrue(test.isEmpty());
+
+
+    }
+    @Test
+    public void testTreeMap(){
+        TreeMap<String, Integer> patients = new TreeMap<>();
+        String[] hold = {"Otis", "Norma", "Frances", "Taylor", "Erin", "Todd", "Heather"};
+        int i = 0;
+        for(String s: hold){
+            patients.put(s, i);
+            i++;
+        }
+        String expected = "Erin";
+        String actual = patients.firstKey();
+        assertEquals(expected, actual);
+        int actual1 = patients.size();
+        assertEquals(7,actual1);
+        assertTrue(patients.containsValue(5));
+        assertTrue(patients.containsKey("Taylor"));
+        assertFalse(patients.containsKey("Jimbob"));
+        patients.clear();
+        assertTrue(patients.isEmpty());
+
+
+    }
+//    @Test
+//    public void testIterator(){
+//        List<Integer> num = new ArrayList<>();
+//        Integer[] numbers = {1,2,3,4,5,6,7,8,9,10};
+//
+//        String expected = "Erin";
+//        String actual = patients.firstKey();
+//        assertEquals(expected, actual);
+//        int actual1 = patients.size();
+//        assertEquals(7,actual1);
+//        assertTrue(patients.containsValue(5));
+//        assertTrue(patients.containsKey("Taylor"));
+//        assertFalse(patients.containsKey("Jimbob"));
+//        patients.clear();
+//        assertTrue(patients.isEmpty());
+//
+//
+//    }
+
 }
